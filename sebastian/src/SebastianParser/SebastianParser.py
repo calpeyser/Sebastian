@@ -16,7 +16,7 @@ class SebastianParser():
     def parse_as_chorale(self):
         self.parsed_input = converter.parse(self.path)
         self.validate()
-        return self.parsed_input
+        return SebastianStructures.Chorale(self.parsed_input)
 
     def validate(self):
         for validator in self.validators:

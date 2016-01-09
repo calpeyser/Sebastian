@@ -1,20 +1,22 @@
 class ChoraleEvaluation():
+    """
+    A mutable data structure giving the state of the chorale analysis.
+    """
 
-    def __init__(self, chorale):
+    def __init__(self, chorale, check_list):
         self.chorale = chorale
-        self.chorale_error_list = ChoraleErrorList()
+        self.chorale_error_list = []
+        self.check_list = check_list
 
-
-class ChoraleErrorList():
-
-    def __init__(self):
-        self.error_list = []
-
-    def add_error(self, error):
-        self.error_list.append(error)
-
+    def evaluate(self):
+        for check in self.check_list:
+            errors_from_check = check.run_check(self.chorale)
+            self.chorale_error_list.extend(errors_from_check)
 
 class ChoraleError():
+    """
+    An error in the chorale.
+    """
 
     def __init__(self, message):
         self.message = message

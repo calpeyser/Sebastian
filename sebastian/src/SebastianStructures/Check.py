@@ -1,10 +1,7 @@
 class Check():
 
-    def __init__(self, chorale_evaluation):
-        self.chorale_evaluation = chorale_evaluation
-
-    def run_check(self):
+    def run_check(self, chorale):
         """
-        Executes a check, possibly adding an error to the chorale_evaluation
+        Executes a check, returning a list of ChoraleError instances
         """
-        pass
+        return []
