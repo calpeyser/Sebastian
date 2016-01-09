@@ -13,6 +13,9 @@ class ChoraleEvaluation():
             errors_from_check = check.run_check(self.chorale)
             self.chorale_error_list.extend(errors_from_check)
 
+    def get_error_list(self):
+        return self.chorale_error_list
+
 class ChoraleError():
     """
     An error in the chorale.
