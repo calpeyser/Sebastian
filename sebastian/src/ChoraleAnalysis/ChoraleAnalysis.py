@@ -1,5 +1,6 @@
 from sebastian.src.SebastianParser.SebastianParser import SebastianParser
 from sebastian.src.SebastianStructures.ChoraleEvaluation import ChoraleEvaluation
+from sebastian.src.Checks.ParallelUnisonCheck import ParallelUnisonCheck
 
 class ChoraleAnalysis():
     """
@@ -42,3 +43,13 @@ class MockChoraleAnalysis(ChoraleAnalysis):
 
     def check_list(self):
         return []
+
+class XMLChoraleAnalysis(ChoraleAnalysis):
+    """
+    An implmenation of ChoraleAnalysis that performs all checks available with only a MusicXML file.
+    """
+
+    def check_list(self):
+        return [
+            ParallelUnisonCheck(),
+        ]

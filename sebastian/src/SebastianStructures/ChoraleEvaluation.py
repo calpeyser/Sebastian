@@ -16,7 +16,7 @@ class ChoraleEvaluation():
     def get_error_list(self):
         return self.chorale_error_list
 
-class ChoraleError():
+class ChoraleError(object):
     """
     An error in the chorale.
     """
