@@ -36,3 +36,6 @@ class ParallelIntervalError(ChoraleError):
 
     def get_beat_2(self):
         return self.measure_and_beat_2[1]
+
+    def get_error_name(self):
+        return "ParallelIntervalError"

@@ -16,6 +16,9 @@ class ChoraleEvaluation():
     def get_error_list(self):
         return self.chorale_error_list
 
+    def get_error_list(self, error_name):
+        return [error for error in self.chorale_error_list if error.get_error_name() == error_name]
+
 class ChoraleError(object):
     """
     An error in the chorale.
@@ -26,3 +29,6 @@ class ChoraleError(object):
 
     def get_message(self):
         return self.message
+
+    def get_error_name(self):
+        return "ChoraleError"

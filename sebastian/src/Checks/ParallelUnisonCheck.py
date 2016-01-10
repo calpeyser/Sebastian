@@ -28,3 +28,6 @@ class ParallelUnisonError(ParallelIntervalError):
 
     def __init__(self, part_number_1, part_number_2, measure_and_beat_1, measure_and_beat_2):
         super(self.__class__, self).__init__("Unison", part_number_1, part_number_2, measure_and_beat_1, measure_and_beat_2)
+
+    def get_error_name(self):
+        return "ParallelUnisonError"

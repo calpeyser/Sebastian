@@ -29,6 +29,9 @@ class ChoraleAnalysis():
     def get_error_list(self):
         return self.evaluation.get_error_list()
 
+    def get_error_list(self, error_name):
+        return self.evaluation.get_error_list(error_name)
+
     def check_list(self):
         """
         :return: A list of checks to be implemented in this analysis.  Should be overridden by
