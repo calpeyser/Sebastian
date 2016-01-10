@@ -88,7 +88,7 @@ class Chorale():
     def get_note_at_offset(self, part_number, target_offset):
         nearest_offset = self.get_offset_list(part_number)[0]
         for offset in self.get_offset_list(part_number):
-            if offset < target_offset:
+            if offset <= target_offset:
                 nearest_offset = offset
             else:
                 break
@@ -97,16 +97,17 @@ class Chorale():
     def get_interval_between_parts_at_offset(self, part_number_1, part_number_2, offset):
         note_1 = self.get_note_at_offset(part_number_1, offset)
         note_2 = self.get_note_at_offset(part_number_2, offset)
+
         return notesToChromatic(note_1, note_2)
 
     def get_measure_and_beat_from_offset(self, offset):
         # ugly hack...
         for index, measure in enumerate(self._get_part_measures(Constants.SOPRANO_PART_NUMBER)[:-1]):
             if measure.offset <= offset and self._get_part_measures(Constants.SOPRANO_PART_NUMBER)[index + 1].offset > offset:
-                return index, offset - measure.offset
+                return index + 1, offset - measure.offset
         else:
             last_measure = self._get_part_measures(Constants.SOPRANO_PART_NUMBER)[-1]
-            return last_measure.offset, offset - last_measure.offset
+            return len(self._get_part_measures(Constants.SOPRANO_PART_NUMBER)), offset - last_measure.offset
 
     def _get_part_measures(self, part_number):
         measures = [element for element in self.parts[part_number] if isinstance(element, Measure)]
