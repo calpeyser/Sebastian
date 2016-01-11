@@ -5,20 +5,20 @@ from sebastian.src.Utils.Utils import *
 
 import unittest
 
-class ParallelUnisonIntegrationTests(unittest.TestCase):
+class ParallelFifthIntegrationTests(unittest.TestCase):
 
-    def test_ThrowsErrorWithParallelUnisons(self):
-        analysis = XMLChoraleAnalysis(TestFilePaths.parallel_unison)
+    def test_ThrowsErrorWithParallelFifths(self):
+        analysis = XMLChoraleAnalysis(TestFilePaths.parallel_fifth)
         analysis.analyze()
-        errors = analysis.get_error_list("ParallelUnisonError")
+        errors = analysis.get_error_list("ParallelFifthError")
         self.assertEqual(1, len(errors))
 
-    def test_CorrectPropertiesOnParallelUnisonError(self):
-        analysis = XMLChoraleAnalysis(TestFilePaths.parallel_unison)
+    def test_CorrectPropertiesOnParallelFifthError(self):
+        analysis = XMLChoraleAnalysis(TestFilePaths.parallel_fifth)
         analysis.analyze()
-        error = get_only_element(analysis.get_error_list("ParallelUnisonError"))
+        error = get_only_element(analysis.get_error_list("ParallelFifthError"))
 
-        self.assertEqual("Unison", error.get_interval_name())
+        self.assertEqual("Fifth", error.get_interval_name())
         self.assertEqual(Constants.ALTO_PART_NUMBER, error.get_part_number_1())
         self.assertEqual(Constants.TENOR_PART_NUMBER, error.get_part_number_2())
         self.assertEqual(2, error.get_measure_1())

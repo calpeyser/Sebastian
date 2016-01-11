@@ -1,6 +1,8 @@
 from sebastian.src.SebastianParser.SebastianParser import SebastianParser
 from sebastian.src.SebastianStructures.ChoraleEvaluation import ChoraleEvaluation
 from sebastian.src.Checks.ParallelUnisonCheck import ParallelUnisonCheck
+from sebastian.src.Checks.ParallelFifthCheck import ParallelFifthCheck
+from sebastian.src.Checks.ParallelOctaveCheck import ParallelOctaveCheck
 
 class ChoraleAnalysis():
     """
@@ -55,4 +57,6 @@ class XMLChoraleAnalysis(ChoraleAnalysis):
     def check_list(self):
         return [
             ParallelUnisonCheck(),
+            ParallelFifthCheck(),
+            ParallelOctaveCheck(),
         ]

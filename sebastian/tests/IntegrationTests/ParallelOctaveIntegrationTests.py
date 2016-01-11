@@ -5,7 +5,7 @@ from sebastian.src.Utils.Utils import *
 
 import unittest
 
-class ParallelUnisonIntegrationTests(unittest.TestCase):
+class BasicIntegrationTests(unittest.TestCase):
 
     def test_ThrowsErrorWithParallelUnisons(self):
         analysis = XMLChoraleAnalysis(TestFilePaths.parallel_unison)
