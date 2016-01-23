@@ -7,10 +7,14 @@ class ParallelIntervalCheck(Check):
 
     def run_check(self, chorale):
         out = []
+        out.extend(self.run_check_for_parts(chorale, Constants.SOPRANO_PART_NUMBER, Constants.ALTO_PART_NUMBER))
+        out.extend(self.run_check_for_parts(chorale, Constants.SOPRANO_PART_NUMBER, Constants.TENOR_PART_NUMBER))
+        out.extend(self.run_check_for_parts(chorale, Constants.SOPRANO_PART_NUMBER, Constants.BASS_PART_NUMBER))
         out.extend(self.run_check_for_parts(chorale, Constants.ALTO_PART_NUMBER, Constants.TENOR_PART_NUMBER))
+        out.extend(self.run_check_for_parts(chorale, Constants.ALTO_PART_NUMBER, Constants.BASS_PART_NUMBER))
+        out.extend(self.run_check_for_parts(chorale, Constants.TENOR_PART_NUMBER, Constants.BASS_PART_NUMBER))
 
         return out
-
 
     def run_check_for_parts(self, chorale, part_number_1, part_number_2):
         offsets = chorale.get_offset_list(part_number_1)

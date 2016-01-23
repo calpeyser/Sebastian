@@ -10,7 +10,7 @@ class ParallelOctaveCheck(ParallelIntervalCheck):
         return ParallelOctaveError(part_number_1, part_number_2, measure_and_beat_1, measure_and_beat_2)
 
     def illegal_interval_list(self):
-        return [Interval(12)]
+        return [Interval(12), Interval(-12), Interval(24), Interval(-24)]
 
 class ParallelOctaveError(ParallelIntervalError):
 

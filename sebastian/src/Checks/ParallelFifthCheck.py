@@ -2,7 +2,7 @@ import sebastian.src.SebastianStructures.Constants as Constants
 from ParallelIntervalError import ParallelIntervalError
 from ParallelIntervalCheck import ParallelIntervalCheck
 
-from music21.interval import Interval
+from music21.interval import ChromaticInterval
 
 class ParallelFifthCheck(ParallelIntervalCheck):
 
@@ -10,7 +10,7 @@ class ParallelFifthCheck(ParallelIntervalCheck):
         return ParallelFifthError(part_number_1, part_number_2, measure_and_beat_1, measure_and_beat_2)
 
     def illegal_interval_list(self):
-        return [Interval(6), Interval(7)]
+        return [ChromaticInterval(7), ChromaticInterval(8), ChromaticInterval(-6), ChromaticInterval(-7)]
 
 class ParallelFifthError(ParallelIntervalError):
 
