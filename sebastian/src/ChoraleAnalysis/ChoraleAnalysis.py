@@ -28,8 +28,8 @@ class ChoraleAnalysis():
         """
         self.evaluation.evaluate()
 
-    def get_error_list(self):
-        return self.evaluation.get_error_list()
+    def get_error_list_all(self):
+        return self.evaluation.get_error_list_all()
 
     def get_error_list(self, error_name):
         return self.evaluation.get_error_list(error_name)

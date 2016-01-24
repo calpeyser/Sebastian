@@ -13,7 +13,7 @@ class ChoraleEvaluation():
             errors_from_check = check.run_check(self.chorale)
             self.chorale_error_list.extend(errors_from_check)
 
-    def get_error_list(self):
+    def get_error_list_all(self):
         return self.chorale_error_list
 
     def get_error_list(self, error_name):
