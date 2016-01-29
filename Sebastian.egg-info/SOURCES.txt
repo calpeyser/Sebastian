@@ -24,3 +24,15 @@ sebastian/src/SebastianStructures/Constants.py
 sebastian/src/SebastianStructures/__init__.py
 sebastian/src/Utils/Utils.py
 sebastian/src/Utils/__init__.py
+sebastian/tests/__init__.py
+sebastian/tests/IntegrationTests/ParallelFifthIntegrationTests.py
+sebastian/tests/IntegrationTests/ParallelOctaveIntegrationTests.py
+sebastian/tests/IntegrationTests/ParallelUnisonIntegrationTests.py
+sebastian/tests/IntegrationTests/SimpleIntegrationTests.py
+sebastian/tests/IntegrationTests/__init__.py
+sebastian/tests/SebastianParserTests/SebastianParserTests.py
+sebastian/tests/SebastianParserTests/__init__.py
+sebastian/tests/SebastianStructuresTests/ChoraleTests.py
+sebastian/tests/SebastianStructuresTests/__init__.py
+sebastian/tests/testfiles/TestFilePaths.py
+sebastian/tests/testfiles/__init__.py

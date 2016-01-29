@@ -13,6 +13,11 @@ setup(
     	'sebastian.src.SebastianParser',
     	'sebastian.src.SebastianStructures',
     	'sebastian.src.Utils',
+        'sebastian.tests',
+        'sebastian.tests.IntegrationTests',
+        'sebastian.tests.SebastianParserTests',
+        'sebastian.tests.SebastianStructuresTests',
+        'sebastian.tests.testfiles',
     ],
     install_requires = ['music21==2.1.0']
 )
