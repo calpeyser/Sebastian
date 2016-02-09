@@ -3,6 +3,7 @@ from sebastian.src.SebastianStructures.ChoraleEvaluation import ChoraleEvaluatio
 from sebastian.src.Checks.ParallelUnisonCheck import ParallelUnisonCheck
 from sebastian.src.Checks.ParallelFifthCheck import ParallelFifthCheck
 from sebastian.src.Checks.ParallelOctaveCheck import ParallelOctaveCheck
+from sebastian.src.Checks.RepBassCheck import RepBassCheck
 
 class ChoraleAnalysis():
     """
@@ -24,14 +25,21 @@ class ChoraleAnalysis():
 
     def analyze(self):
         """
-        :return: A list of errors
+        Populates this chorale's evaluation with a list of errors.
         """
         self.evaluation.evaluate()
 
     def get_error_list_all(self):
+        """
+        :return: Errors from this analysis
+        """
         return self.evaluation.get_error_list_all()
 
     def get_error_list(self, error_name):
+        """
+        :param error_name: Error type
+        :return: A list of errors from this analysis of this type.
+        """
         return self.evaluation.get_error_list(error_name)
 
     def check_list(self):
@@ -59,4 +67,5 @@ class XMLChoraleAnalysis(ChoraleAnalysis):
             ParallelUnisonCheck(),
             ParallelFifthCheck(),
             ParallelOctaveCheck(),
+            RepBassCheck(),
         ]

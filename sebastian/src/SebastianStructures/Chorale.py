@@ -5,6 +5,7 @@ from music21.stream import Measure
 from music21.note import Note
 from music21.tie import Tie
 from music21.interval import notesToChromatic
+from sebastian.src.Checks.Location import Location
 
 
 class Chorale():
@@ -108,6 +109,10 @@ class Chorale():
         else:
             last_measure = self._get_part_measures(Constants.SOPRANO_PART_NUMBER)[-1]
             return len(self._get_part_measures(Constants.SOPRANO_PART_NUMBER)), offset - last_measure.offset
+
+    def get_location_from_offset(self, offset):
+        measure_and_beat = self.get_measure_and_beat_from_offset(offset)
+        return Location(measure_and_beat[0], measure_and_beat[1])
 
     def _get_part_measures(self, part_number):
         measures = [element for element in self.parts[part_number] if isinstance(element, Measure)]

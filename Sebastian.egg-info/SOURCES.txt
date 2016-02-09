@@ -11,6 +11,8 @@ sebastian/src/Checks/ParallelIntervalCheck.py
 sebastian/src/Checks/ParallelIntervalError.py
 sebastian/src/Checks/ParallelOctaveCheck.py
 sebastian/src/Checks/ParallelUnisonCheck.py
+sebastian/src/Checks/RepBassCheck.py
+sebastian/src/Checks/RepBassError.py
 sebastian/src/Checks/__init__.py
 sebastian/src/ChoraleAnalysis/ChoraleAnalysis.py
 sebastian/src/ChoraleAnalysis/__init__.py
@@ -28,6 +30,7 @@ sebastian/tests/__init__.py
 sebastian/tests/IntegrationTests/ParallelFifthIntegrationTests.py
 sebastian/tests/IntegrationTests/ParallelOctaveIntegrationTests.py
 sebastian/tests/IntegrationTests/ParallelUnisonIntegrationTests.py
+sebastian/tests/IntegrationTests/RepBassIntegrationTests.py
 sebastian/tests/IntegrationTests/SimpleIntegrationTests.py
 sebastian/tests/IntegrationTests/__init__.py
 sebastian/tests/SebastianParserTests/SebastianParserTests.py
