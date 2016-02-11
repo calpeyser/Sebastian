@@ -53,6 +53,14 @@ class Chorale():
             self._construct_note_list(Constants.BASS_PART_NUMBER),
         ]
 
+        self.full_note_list = [
+            self._construct_full_note_list(Constants.SOPRANO_PART_NUMBER),
+            self._construct_full_note_list(Constants.ALTO_PART_NUMBER),
+            self._construct_full_note_list(Constants.TENOR_PART_NUMBER),
+            self._construct_full_note_list(Constants.BASS_PART_NUMBER),
+
+        ]
+
         # maps offsets -> notes
         self.reverse_note_maps = [
             self._construct_reverse_note_map(Constants.SOPRANO_PART_NUMBER),
@@ -68,6 +76,7 @@ class Chorale():
             self._construct_offset_list(Constants.BASS_PART_NUMBER)
         ]
 
+
     def get_score(self):
         """
         :return: The score wrapped by this Chorale instance.
@@ -82,6 +91,10 @@ class Chorale():
 
     def get_reverse_note_map(self, part_number):
         return self.reverse_note_maps[part_number]
+
+    # returns list of note and octave
+    def get_full_note_list(self, part_number):
+        return self.full_note_list[part_number]
 
     def get_offset_list(self, part_number):
         return self.offset_lists[part_number]
@@ -143,6 +156,13 @@ class Chorale():
                 if (isinstance(element, Note)):
                     if not element.tie == Tie("stop"):
                         out.append(element)
+        return out
+
+    def _construct_full_note_list(self, part_number):
+        out = []
+        note_list = self._construct_note_list(part_number)
+        for note in note_list:
+            out.append(note.nameWithOctave)
         return out
 
     def _construct_offset_list(self, part_number):
