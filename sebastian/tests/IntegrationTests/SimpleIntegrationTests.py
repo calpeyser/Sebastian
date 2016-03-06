@@ -22,7 +22,7 @@ class BasicIntegrationTests(unittest.TestCase):
     def test_MockAnalysisReturnsNoErrors(self):
         analysis = MockChoraleAnalysis(TestFilePaths.basic_chorale)
         analysis.analyze()
-        error_list = analysis.get_error_list()
+        error_list = analysis.get_error_list_all()
 
         self.assertEqual([], error_list)
 
