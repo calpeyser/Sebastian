@@ -3,7 +3,6 @@ from sebastian.src.SebastianStructures.ChoraleEvaluation import ChoraleEvaluatio
 from sebastian.src.Checks.ParallelUnisonCheck import ParallelUnisonCheck
 from sebastian.src.Checks.ParallelFifthCheck import ParallelFifthCheck
 from sebastian.src.Checks.ParallelOctaveCheck import ParallelOctaveCheck
-from sebastian.src.Checks.RepBassCheck import RepBassCheck
 
 class ChoraleAnalysis():
     """
@@ -67,5 +66,4 @@ class XMLChoraleAnalysis(ChoraleAnalysis):
             ParallelUnisonCheck(),
             ParallelFifthCheck(),
             ParallelOctaveCheck(),
-            RepBassCheck(),
         ]

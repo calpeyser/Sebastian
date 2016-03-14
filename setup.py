@@ -6,7 +6,6 @@ setup(
     description = "A library for performing validations on chorales.",
     author = "Cal Peyser",
     packages = [
-    	'sebastian', 
     	'sebastian.src',
     	'sebastian.src.Checks',
     	'sebastian.src.ChoraleAnalysis',
@@ -19,5 +18,6 @@ setup(
         'sebastian.tests.SebastianStructuresTests',
         'sebastian.tests.testfiles',
     ],
+    package_data = {'sebastian.tests.testfiles': ["*.xml"]},
     install_requires = ['music21==2.1.0']
 )
