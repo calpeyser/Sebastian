@@ -5,14 +5,14 @@ from music21.pitch import Pitch
 
 import unittest
 
-class ChoraleTests(unittest.TestCase):
 
+class ChoraleTests(unittest.TestCase):
     def setUp(self):
         parser = SebastianParser(TestFilePaths.basic_chorale)
         self.chorale = parser.parse_as_chorale()
 
     def test_NoteMaps(self):
-        soprano_note_map =  self.chorale.get_note_map(Constants.SOPRANO_PART_NUMBER)
+        soprano_note_map = self.chorale.get_note_map(Constants.SOPRANO_PART_NUMBER)
         soprano_note_list = self.chorale.get_note_list(Constants.SOPRANO_PART_NUMBER)
 
         self.assertEqual(0.0, soprano_note_map[soprano_note_list[0]])
@@ -47,12 +47,6 @@ class ChoraleTests(unittest.TestCase):
     def test_GetNoteAtOffset(self):
         self.assertEqual(Pitch("G4"), self.chorale.get_note_at_offset(Constants.SOPRANO_PART_NUMBER, 0.0).pitch)
         self.assertEqual(Pitch("G4"), self.chorale.get_note_at_offset(Constants.SOPRANO_PART_NUMBER, 1.5).pitch)
-
-    def test_get_measure_and_beat_from_offset(self):
-        self.assertEqual((1, 0.0), self.chorale.get_measure_and_beat_from_offset(0))
-        self.assertEqual((2, 0.0), self.chorale.get_measure_and_beat_from_offset(1))
-        self.assertEqual((2, 1.0), self.chorale.get_measure_and_beat_from_offset(2))
-        self.assertEqual((5, 0.0), self.chorale.get_measure_and_beat_from_offset(10))
 
 
 if __name__ == "__main__":
