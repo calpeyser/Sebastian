@@ -11,6 +11,8 @@ class ParallelOctaveIntegrationTests(unittest.TestCase):
         analysis = XMLChoraleAnalysis(TestFilePaths.parallel_octave)
         analysis.analyze()
         errors = analysis.get_error_list("ParallelOctaveError")
+        for error in errors:
+            print error.message
         self.assertEqual(1, len(errors))
 
     def test_CorrectPropertiesOnParallelOctaveError(self):

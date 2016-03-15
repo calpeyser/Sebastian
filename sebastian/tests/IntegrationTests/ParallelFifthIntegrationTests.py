@@ -1,5 +1,5 @@
 from sebastian.src.ChoraleAnalysis.ChoraleAnalysis import XMLChoraleAnalysis
-import sebastian.tests.testfiles.TestFilePaths as TestFilePaths
+from sebastian.tests.testfiles import TestFilePaths
 from sebastian.src.SebastianStructures import Constants
 from sebastian.src.Utils.Utils import *
 
@@ -9,8 +9,11 @@ class ParallelFifthIntegrationTests(unittest.TestCase):
 
     def test_ThrowsErrorWithParallelFifths(self):
         analysis = XMLChoraleAnalysis(TestFilePaths.parallel_fifth)
+
         analysis.analyze()
         errors = analysis.get_error_list("ParallelFifthError")
+        for error in errors:
+            print error.message
         self.assertEqual(1, len(errors))
 
     def test_CorrectPropertiesOnParallelFifthError(self):

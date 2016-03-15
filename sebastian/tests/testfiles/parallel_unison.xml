@@ -6,7 +6,7 @@
     <creator type="composer">Music21</creator>
     <encoding>
       <software>MuseScore 2.0.2</software>
-      <encoding-date>2016-01-09</encoding-date>
+      <encoding-date>2016-03-11</encoding-date>
       <supports element="accidental" type="yes"/>
       <supports element="beam" type="yes"/>
       <supports element="print" attribute="new-page" type="yes" value="yes"/>
@@ -39,10 +39,10 @@
     <lyric-font font-family="FreeSerif" font-size="11"/>
     </defaults>
   <credit page="1">
-    <credit-words default-x="595.276" default-y="1627.09" justify="center" valign="top" font-size="24">Music21 Fragment</credit-words>
+    <credit-words default-x="1133.86" default-y="1502.09" justify="right" valign="bottom" font-size="12">Music21</credit-words>
     </credit>
   <credit page="1">
-    <credit-words default-x="1133.86" default-y="1527.09" justify="right" valign="bottom" font-size="12">Music21</credit-words>
+    <credit-words default-x="595.275" default-y="1627.09" justify="center" valign="top" font-size="24">Music21 Fragment</credit-words>
     </credit>
   <part-list>
     <score-part id="P1">
@@ -99,10 +99,10 @@
       <print>
         <system-layout>
           <system-margins>
-            <left-margin>0.00</left-margin>
+            <left-margin>-0.00</left-margin>
             <right-margin>0.00</right-margin>
             </system-margins>
-          <top-system-distance>170.00</top-system-distance>
+          <top-system-distance>195.00</top-system-distance>
           </system-layout>
         </print>
       <attributes>
@@ -121,13 +121,13 @@
         </attributes>
       <direction placement="above">
         <direction-type>
+          <words font-weight="bold" font-size="12">.0</words>
+          </direction-type>
+        <direction-type>
           <metronome parentheses="no">
             <beat-unit>quarter</beat-unit>
             <per-minute>60</per-minute>
             </metronome>
-          </direction-type>
-        <direction-type>
-          <words font-weight="bold" font-size="12">.0</words>
           </direction-type>
         <sound tempo="60"/>
         </direction>
@@ -221,13 +221,13 @@
         </attributes>
       <direction placement="above">
         <direction-type>
+          <words font-weight="bold" font-size="12">.0</words>
+          </direction-type>
+        <direction-type>
           <metronome parentheses="no">
             <beat-unit>quarter</beat-unit>
             <per-minute>60</per-minute>
             </metronome>
-          </direction-type>
-        <direction-type>
-          <words font-weight="bold" font-size="12">.0</words>
           </direction-type>
         <sound tempo="60"/>
         </direction>
@@ -320,13 +320,13 @@
         </attributes>
       <direction placement="above">
         <direction-type>
+          <words font-weight="bold" font-size="12">.0</words>
+          </direction-type>
+        <direction-type>
           <metronome parentheses="no">
             <beat-unit>quarter</beat-unit>
             <per-minute>60</per-minute>
             </metronome>
-          </direction-type>
-        <direction-type>
-          <words font-weight="bold" font-size="12">.0</words>
           </direction-type>
         <sound tempo="60"/>
         </direction>
@@ -430,19 +430,19 @@
         </attributes>
       <direction placement="above">
         <direction-type>
+          <words font-weight="bold" font-size="12">.0</words>
+          </direction-type>
+        <direction-type>
           <metronome parentheses="no">
             <beat-unit>quarter</beat-unit>
             <per-minute>60</per-minute>
             </metronome>
           </direction-type>
-        <direction-type>
-          <words font-weight="bold" font-size="12">.0</words>
-          </direction-type>
         <sound tempo="60"/>
         </direction>
-      <note default-x="88.37" default-y="-355.00">
+      <note default-x="88.37" default-y="-350.00">
         <pitch>
-          <step>G</step>
+          <step>A</step>
           <octave>2</octave>
           </pitch>
         <duration>2</duration>
