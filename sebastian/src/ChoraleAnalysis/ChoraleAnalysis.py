@@ -7,6 +7,7 @@ from sebastian.src.Checks.ParallelOctaveCheck import ParallelOctaveCheck
 from sebastian.src.Checks.RepBassCheck import RepBassCheck
 from sebastian.src.Checks.RangeCheck import RangeCheck
 from sebastian.src.Checks.TritoneJumpCheck import TritoneJumpCheck
+from sebastian.src.Checks.VoiceCrossingCheck import VoiceCrossingCheck
 
 =======
 >>>>>>> master
@@ -75,4 +76,5 @@ class XMLChoraleAnalysis(ChoraleAnalysis):
             ParallelOctaveCheck(),
             RangeCheck(),
             TritoneJumpCheck(),
+            VoiceCrossingCheck(),
         ]
