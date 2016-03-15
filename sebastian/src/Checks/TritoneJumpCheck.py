@@ -47,3 +47,4 @@ class TritoneJumpCheck(Check):
                 previous_offset = offset
             index = index + 1
         return out
+
