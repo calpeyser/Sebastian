@@ -116,8 +116,9 @@ class Chorale():
 
     def get_measure_and_beat_from_offset(self, offset):
         # ugly hack...
-        for index, measure in enumerate(self._get_part_measures(Constants.SOPRANO_PART_NUMBER)[:-1]):
-            if measure.offset <= offset:
+        measure_list = self._get_part_measures(Constants.SOPRANO_PART_NUMBER)
+        for index, measure in enumerate(measure_list[:-1]):
+            if measure.offset <= offset and measure_list[index + 1].offset > offset:
                 return index + 1, offset - measure.offset
         else:
             last_measure = self._get_part_measures(Constants.SOPRANO_PART_NUMBER)[-1]

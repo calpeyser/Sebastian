@@ -48,6 +48,12 @@ class ChoraleTests(unittest.TestCase):
         self.assertEqual(Pitch("G4"), self.chorale.get_note_at_offset(Constants.SOPRANO_PART_NUMBER, 0.0).pitch)
         self.assertEqual(Pitch("G4"), self.chorale.get_note_at_offset(Constants.SOPRANO_PART_NUMBER, 1.5).pitch)
 
+    def test_get_measure_and_beat_from_offset(self):
+        self.assertEqual((1, 0.0), self.chorale.get_measure_and_beat_from_offset(0))
+        self.assertEqual((2, 0.0), self.chorale.get_measure_and_beat_from_offset(1))
+        self.assertEqual((2, 1.0), self.chorale.get_measure_and_beat_from_offset(2))
+        self.assertEqual((5, 0.0), self.chorale.get_measure_and_beat_from_offset(10))
+
 
 if __name__ == "__main__":
     unittest.main()

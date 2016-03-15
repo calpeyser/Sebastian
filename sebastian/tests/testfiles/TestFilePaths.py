@@ -8,4 +8,4 @@ parallel_fifth = TESTFILES_ROOT + "parallel_fifth.xml"
 parallel_octave = TESTFILES_ROOT + "parallel_octave.xml"
 rep_bass = TESTFILES_ROOT + "rep_bass.xml"
 out_of_range = TESTFILES_ROOT + "out_of_range.xml"
-
+tritone_jump = TESTFILES_ROOT + "tritone_jump.xml"
