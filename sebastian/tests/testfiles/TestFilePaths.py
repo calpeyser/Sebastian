@@ -10,3 +10,5 @@ rep_bass = TESTFILES_ROOT + "rep_bass.xml"
 out_of_range = TESTFILES_ROOT + "out_of_range.xml"
 tritone_jump = TESTFILES_ROOT + "tritone_jump.xml"
 voice_crossing = TESTFILES_ROOT + "voice_crossing.xml"
+adjacents_greater_than_octave = TESTFILES_ROOT + "adjacents_greater_than_octave.xml"
+
