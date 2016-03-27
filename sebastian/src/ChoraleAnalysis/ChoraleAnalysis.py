@@ -3,14 +3,10 @@ from sebastian.src.SebastianStructures.ChoraleEvaluation import ChoraleEvaluatio
 from sebastian.src.Checks.ParallelUnisonCheck import ParallelUnisonCheck
 from sebastian.src.Checks.ParallelFifthCheck import ParallelFifthCheck
 from sebastian.src.Checks.ParallelOctaveCheck import ParallelOctaveCheck
-<<<<<<< HEAD
 from sebastian.src.Checks.RepBassCheck import RepBassCheck
 from sebastian.src.Checks.RangeCheck import RangeCheck
 from sebastian.src.Checks.TritoneJumpCheck import TritoneJumpCheck
 from sebastian.src.Checks.VoiceCrossingCheck import VoiceCrossingCheck
-
-=======
->>>>>>> master
 
 class ChoraleAnalysis():
     """
