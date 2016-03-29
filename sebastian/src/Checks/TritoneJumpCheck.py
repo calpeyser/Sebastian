@@ -41,7 +41,7 @@ class TritoneJumpCheck(Check):
                     current_location = chorale.get_location_from_offset(offset)
                     previous_location = chorale.get_location_from_offset(previous_offset)
                     part = Constants.PART_NAMES[index]
-                    error = TritoneJumpError(part, previous_pitch, previous_location, current_pitch, current_location)
+                    error = TritoneJumpError(part, previous_pitch, previous_location, current_pitch, current_location, [previous_note, current_note])
                     out.append(error)
                 previous_note = current_note
                 previous_offset = offset

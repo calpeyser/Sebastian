@@ -4,7 +4,7 @@ import sebastian.src.SebastianStructures.Constants as Constants
 
 class ParallelIntervalError(ChoraleError):
 
-    def __init__(self, interval_name, part_number_1, part_number_2, measure_and_beat_1, measure_and_beat_2):
+    def __init__(self, interval_name, part_number_1, part_number_2, measure_and_beat_1, measure_and_beat_2, notes):
         message = "Parallel %s between %s and %s. First %s at measure %s beat %s. Second %s at measure %s beat %s." % \
                        (interval_name, Constants.PART_NAMES[part_number_1], Constants.PART_NAMES[part_number_2], interval_name, measure_and_beat_1[0], measure_and_beat_1[1], interval_name, measure_and_beat_2[0], measure_and_beat_2[1])
 
@@ -13,8 +13,9 @@ class ParallelIntervalError(ChoraleError):
         self.part_number_2 = part_number_2
         self.measure_and_beat_1 = measure_and_beat_1
         self.measure_and_beat_2 = measure_and_beat_2
+        self.notes = notes
 
-        super(ParallelIntervalError, self).__init__(message)
+        super(ParallelIntervalError, self).__init__(message, self.notes)
 
     def get_interval_name(self):
         return self.interval_name

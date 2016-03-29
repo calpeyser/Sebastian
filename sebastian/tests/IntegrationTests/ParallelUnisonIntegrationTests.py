@@ -2,6 +2,7 @@ from sebastian.src.ChoraleAnalysis.ChoraleAnalysis import XMLChoraleAnalysis
 import sebastian.tests.testfiles.TestFilePaths as TestFilePaths
 from sebastian.src.SebastianStructures import Constants
 from sebastian.src.Utils.Utils import *
+from music21 import note
 
 import unittest
 
@@ -25,6 +26,11 @@ class ParallelUnisonIntegrationTests(unittest.TestCase):
         self.assertEqual(1.0, error.get_beat_1())
         self.assertEqual(2, error.get_measure_2())
         self.assertEqual(2.0, error.get_beat_2())
+        self.assertEqual(note.Note("C4"), error.get_notes()[0])
+        self.assertEqual(note.Note("D4"), error.get_notes()[1])
+        self.assertEqual(note.Note("C4"), error.get_notes()[2])
+        self.assertEqual(note.Note("D4"), error.get_notes()[3])
+
 
 if __name__ == "__main__":
     unittest.main()

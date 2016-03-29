@@ -52,6 +52,13 @@ class ChoraleAnalysis():
         """
         pass
 
+    def get_annotated_chorale(self):
+        """
+        :return: A string giving musicXML for this chorale, with colors applied for mistakes.
+        """
+        self.chorale.annotate_chorale(self.get_error_list_all())
+        return self.chorale
+
 class MockChoraleAnalysis(ChoraleAnalysis):
     """
     An implementation of ChoraleAnalysis with no checks.
