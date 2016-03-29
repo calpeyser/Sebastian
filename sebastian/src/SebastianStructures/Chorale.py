@@ -8,6 +8,8 @@ from music21.interval import notesToChromatic
 from sebastian.src.Checks.Location import Location
 
 
+RED_COLOR = "#ee1111"
+
 class Chorale():
     """
     A wrapper over a music21.stream.Score instance that represents the chorale under evaluation.
@@ -76,6 +78,14 @@ class Chorale():
             self._construct_offset_list(Constants.BASS_PART_NUMBER)
         ]
 
+    def annotate_chorale(self, errors):
+        """
+        :param errors: Instances of ChoraleError
+        :return: A string giving the musicXML for this chorale, with the given errors annotated.
+        """
+        for error in errors:
+            for note in error.get_notes():
+                note.color = RED_COLOR
 
     def get_score(self):
         """

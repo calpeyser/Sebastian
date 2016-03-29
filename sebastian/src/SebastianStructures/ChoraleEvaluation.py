@@ -24,11 +24,18 @@ class ChoraleError(object):
     An error in the chorale.
     """
 
-    def __init__(self, message):
+    def __init__(self, message, notes):
         self.message = message
+        self.notes = notes
 
     def get_message(self):
         return self.message
 
     def get_error_name(self):
         return "ChoraleError"
+
+    def get_notes(self):
+        """
+        :return: A list of notes that are "incorrect" subject to this error
+        """
+        return self.notes

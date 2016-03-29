@@ -24,10 +24,16 @@ class ParallelIntervalCheck(Check):
         for index, offset in enumerate(offsets[:-1]):
             if chorale.get_interval_between_parts_at_offset(part_number_1, part_number_2, offset) in self.illegal_interval_list():
                 if chorale.get_interval_between_parts_at_offset(part_number_1, part_number_2, offsets[index + 1]) in self.illegal_interval_list():
-                    out.append(self.create_error(part_number_1, part_number_2, chorale.get_measure_and_beat_from_offset(offset), chorale.get_measure_and_beat_from_offset(offsets[index + 1])))
+                    notes = []
+                    notes.append(chorale.get_reverse_note_map(part_number_1)[offset])
+                    notes.append(chorale.get_reverse_note_map(part_number_1)[offsets[index + 1]])
+                    notes.append(chorale.get_reverse_note_map(part_number_2)[offset])
+                    notes.append(chorale.get_reverse_note_map(part_number_2)[offsets[index + 1]])
+
+                    out.append(self.create_error(part_number_1, part_number_2, chorale.get_measure_and_beat_from_offset(offset), chorale.get_measure_and_beat_from_offset(offsets[index + 1]), notes))
         return out
 
-    def create_error(self, part_number_1, part_number_2, measure_and_beat_1, measure_and_beat_2):
+    def create_error(self, part_number_1, part_number_2, measure_and_beat_1, measure_and_beat_2, notes):
         pass
 
     def illegal_interval_list(self):
