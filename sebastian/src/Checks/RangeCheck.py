@@ -38,7 +38,7 @@ class RangeCheck(Check):
                 pitch = Utils.get_only_element(note.pitches)
                 if pitch > ranges[i].max or pitch < ranges[i].min:
                     location = chorale.get_location_from_offset(offset)
-                    error = RangeError(note, Constants.PART_NAMES[i], location, [note])
+                    error = RangeError(note, Constants.PART_NAMES[i], location)
                     out.append(error)
             i += 1
 

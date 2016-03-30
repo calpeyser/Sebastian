@@ -4,13 +4,13 @@ import sebastian.src.Checks.Location as Location
 
 
 class RangeError(ChoraleError):
-    def __init__(self, pitch, part, location, notes):
+    def __init__(self, pitch, part, location):
         message = 'the note %s is out of range in the %s at measure %s beat %s' % (
         pitch, part, location.get_measure(), location.get_beat())
         self.location = location
         self.pitch = pitch
         self.part = part
-        super(RangeError, self).__init__(message, notes)
+        super(RangeError, self).__init__(message, self.pitch)
 
     def get_error_name(self):
         return "RangeError"
@@ -23,3 +23,6 @@ class RangeError(ChoraleError):
 
     def get_beat(self):
         return self.location.get_beat()
+
+    def get_part(self):
+        return self.part

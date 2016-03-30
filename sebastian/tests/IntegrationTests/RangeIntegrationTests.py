@@ -17,6 +17,7 @@ class RangeIntegrationTests(unittest.TestCase):
         analysis = XMLChoraleAnalysis(TestFilePaths.out_of_range)
         analysis.analyze()
         error = get_only_element(analysis.get_error_list("RangeError"))
+        print(error.get_part())
         self.assertEqual(1.0, error.get_measure())
 
 
