@@ -1,3 +1,5 @@
+import music21.note as note
+
 class Range():
     def __init__(self, min, max):
         self.min = min
@@ -8,3 +10,5 @@ class Range():
 
     def get_max(self):
         return self.max
+
+

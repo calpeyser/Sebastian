@@ -7,55 +7,54 @@ from sebastian.src.Checks.Range import Range
 
 import music21.note as note
 
+
+# def run_check(self, chorale):
+#         out = []
+#         out.extend(self.run_check_for_parts(chorale, Constants.TENOR_PART_NUMBER, Constants.ALTO_PART_NUMBER))
+#         out.extend(self.run_check_for_parts(chorale, Constants.ALTO_PART_NUMBER, Constants.SOPRANO_PART_NUMBER))
+#         return out
+#
+#     def run_check_for_parts(self, chorale, part_1, part_2):
+#         out = []
+#         notes_for_part = chorale.reverse_note_maps
+#         for offset in notes_for_part[part_1]:
+#             #check if offset exists in notes_for_part[part_2]
+#             if offset in notes_for_part[part_2]:
+#                 pitch_1 = notes_for_part[part_1][offset].pitch
+#                 pitch_2 = notes_for_part[part_2][offset].pitch
+#                 if pitch_2.ps - pitch_1.ps > 12.0:
+#                     error = DistanceBetweenVoicesError(pitch_1, pitch_2, part_1, part_2, chorale.get_location_from_offset(offset))
+#                     out.append(error)
+#         return out
+
+
+
+
 class RangeCheck(Check):
     def run_check(self, chorale):
         out = []
-        ranges = [
-            self.set_range(0),
-            self.set_range(1),
-            self.set_range(2),
-            self.set_range(3)
-        ]
-
-        offset_lists = [
-            chorale.get_offset_list(Constants.SOPRANO_PART_NUMBER),
-            chorale.get_offset_list(Constants.ALTO_PART_NUMBER),
-            chorale.get_offset_list(Constants.TENOR_PART_NUMBER),
-            chorale.get_offset_list(Constants.BASS_PART_NUMBER)
-        ]
-
-        reverse_note_maps = [
-            chorale.get_reverse_note_map(Constants.SOPRANO_PART_NUMBER),
-            chorale.get_reverse_note_map(Constants.ALTO_PART_NUMBER),
-            chorale.get_reverse_note_map(Constants.TENOR_PART_NUMBER),
-            chorale.get_reverse_note_map(Constants.BASS_PART_NUMBER)
-        ]
-
-        i = 0
-        while i < 4:
-            for offset in offset_lists[i]:
-                note = reverse_note_maps[i][offset]
-                pitch = Utils.get_only_element(note.pitches)
-                if pitch > ranges[i].max or pitch < ranges[i].min:
-                    location = chorale.get_location_from_offset(offset)
-                    error = RangeError(note, Constants.PART_NAMES[i], location)
-                    out.append(error)
-            i += 1
-
+        out.extend(self.check_part(Constants.SOPRANO_PART_NUMBER, chorale.get_range_for_part(Constants.SOPRANO_PART_NUMBER), chorale))
+        out.extend(self.check_part(Constants.ALTO_PART_NUMBER, chorale.get_range_for_part(Constants.ALTO_PART_NUMBER), chorale))
+        out.extend(self.check_part(Constants.TENOR_PART_NUMBER, chorale.get_range_for_part(Constants.TENOR_PART_NUMBER), chorale))
+        out.extend(self.check_part(Constants.BASS_PART_NUMBER, chorale.get_range_for_part(Constants.BASS_PART_NUMBER), chorale))
         return out
 
-    def set_range(self, part):
-        if part == 0:
-            min = note.Note('C4')
-            max = note.Note('G5')
-        if part == 1:
-            min = note.Note('G3')
-            max = note.Note('D5')
-        if part == 2:
-            min = note.Note('C3')
-            max = note.Note('G4')
-        if part == 3:
-            min = note.Note('F2')
-            max = note.Note('C4')
+    def check_part(self, part, range, chorale):
+        out = []
+        for note, offset in chorale.note_maps[part].items():
+            pitch = note.pitch
+            offset = note.offset
+            if pitch > range.max or pitch < range.min:
+                location = chorale.get_location_from_offset(offset)
+                error = RangeError(pitch, Constants.PART_NAMES[part], location)
+                out.append(error)
+        return out
 
-        return Range(min, max)
+'''
+a note is not a unique key value so necessary to access notes via a reverse_note_map,
+which maps notes to offsets, in order to keep track of the notes location. It's a good idea
+to create an object which wraps the music_21 note and holds a location attribute.
+
+'''
+
+

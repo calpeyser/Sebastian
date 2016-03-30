@@ -1,6 +1,7 @@
 from sebastian.src.ChoraleAnalysis.ChoraleAnalysis import XMLChoraleAnalysis
 import sebastian.tests.testfiles.TestFilePaths as TestFilePaths
 from sebastian.src.SebastianStructures import Constants
+from music21.pitch import Pitch
 from sebastian.src.Utils.Utils import *
 
 import unittest
@@ -17,9 +18,10 @@ class RangeIntegrationTests(unittest.TestCase):
         analysis = XMLChoraleAnalysis(TestFilePaths.out_of_range)
         analysis.analyze()
         error = get_only_element(analysis.get_error_list("RangeError"))
-        print(error.get_part())
         self.assertEqual(1.0, error.get_measure())
-
+        self.assertEqual('soprano', error.get_part())
+        expected_pitch = Pitch('B3')
+        self.assertEqual(expected_pitch, error.get_pitch())
 
 if __name__ == "__main__":
     unittest.main()

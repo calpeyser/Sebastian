@@ -6,6 +6,7 @@ from music21.note import Note
 from music21.tie import Tie
 from music21.interval import notesToChromatic
 from sebastian.src.Checks.Location import Location
+from sebastian.src.Checks.Range import Range
 
 
 RED_COLOR = "#ee1111"
@@ -137,6 +138,23 @@ class Chorale():
     def get_location_from_offset(self, offset):
         measure_and_beat = self.get_measure_and_beat_from_offset(offset)
         return Location(measure_and_beat[0], measure_and_beat[1])
+
+    def get_range_for_part(self, part):
+        if part == 0:
+            min = Note('C4')
+            max = Note('G5')
+        if part == 1:
+            min = Note('G3')
+            max = Note('D5')
+        if part == 2:
+            min = Note('C3')
+            max = Note('G4')
+        if part == 3:
+            min = Note('F2')
+            max = Note('C4')
+
+        return Range(min, max)
+
 
     def _get_part_measures(self, part_number):
         measures = [element for element in self.parts[part_number] if isinstance(element, Measure)]
