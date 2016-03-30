@@ -11,18 +11,17 @@ class TritoneJumpIntegrationTests(unittest.TestCase):
         analysis = XMLChoraleAnalysis(TestFilePaths.tritone_jump)
         analysis.analyze()
         errors = analysis.get_error_list("TritoneJumpError")
-        self.assertEqual(1, len(errors))
+        self.assertEqual(3, len(errors))
 
 
     def test_ErrorHasCorrectProperties(self):
-        analysis = XMLChoraleAnalysis(TestFilePaths.rep_bass)
+        analysis = XMLChoraleAnalysis(TestFilePaths.tritone_jump)
         analysis.analyze()
-        error = get_only_element(analysis.get_error_list("TritoneJumpError"))
-        self.assertEqual(0.0, error.get_measure_1())
-        self.assertEqual(0.0, error.get_measure_2())
-        self.assertEqual(0.0, error.get_beat_1())
-        self.assertEqual(1.0, error.get_beat_2())
-
+        errors = analysis.get_error_list("TritoneJumpError")
+        self.assertEqual(1.0, errors[0].get_measure_1())
+        self.assertEqual(1.0, errors[0].get_measure_2())
+        self.assertEqual(0.0, errors[0].get_beat_1())
+        self.assertEqual(1.0, errors[0].get_beat_2())
 
 if __name__ == "__main__":
     unittest.main()

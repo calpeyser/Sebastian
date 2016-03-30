@@ -1,10 +1,12 @@
 from sebastian.src.SebastianStructures.ChoraleEvaluation import ChoraleError
 import sebastian.src.Checks.Location as Location
+import sebastian.src.SebastianStructures.Constants as Constants
+
 
 class TritoneJumpError(ChoraleError):
     def __init__(self, part, pitch_1, location_1, pitch_2, location_2, notes):
         message = "tritone jump (%s - %s) in %s at measure %s beat %s and measure %s beat %s" % (
-        pitch_1, pitch_2, part, location_1.get_measure(), location_1.get_beat(), location_2.get_measure(), location_2.get_beat())
+        pitch_1, pitch_2, Constants.PART_NAMES[part], location_1.get_measure(), location_1.get_beat(), location_2.get_measure(), location_2.get_beat())
         self.pitch_1 = pitch_1
         self.pitch_2 = pitch_2
         self.location_1 = location_1

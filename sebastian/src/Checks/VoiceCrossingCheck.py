@@ -15,13 +15,12 @@ class VoiceCrossingCheck(Check):
 
     def run_check_for_parts(self, chorale, part_1, part_2):
         out = []
-        notes_for_part = chorale.reverse_note_maps
-        for offset in notes_for_part[part_1]:
+        for offset in chorale.reverse_note_maps[part_1]:
             #check if offset exists in notes_for_part[part_2]
-            if offset in notes_for_part[part_2]:
-                pitch_1 = notes_for_part[part_1][offset].pitch
-                pitch_2 = notes_for_part[part_2][offset].pitch
-                notes = [notes_for_part[part_1][offset], notes_for_part[part_2][offset]]
+            if offset in chorale.reverse_note_maps[part_2]:
+                pitch_1 = chorale.reverse_note_maps[part_1][offset].pitch
+                pitch_2 = chorale.reverse_note_maps[part_2][offset].pitch
+                notes = [chorale.reverse_note_maps[part_1][offset], chorale.reverse_note_maps[part_2][offset]]
 
                 if pitch_1.ps > pitch_2.ps:
                     error = VoiceCrossingError(pitch_1, pitch_2, part_1, part_2, chorale.get_location_from_offset(offset), notes)

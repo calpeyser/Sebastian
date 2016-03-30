@@ -14,12 +14,12 @@ class VoiceCrossingIntegrationTests(unittest.TestCase):
         self.assertEqual(2, len(errors))
 
 
-    def test_ErrorHasCorrectProperties(self):
-        analysis = XMLChoraleAnalysis(TestFilePaths.rep_bass)
-        analysis.analyze()
-        error = get_only_element(analysis.get_error_list("VoiceCrossingError"))
-        self.assertEqual(1.0, error.get_measure())
-        self.assertEqual(0.0, error.get_beat())
+    # def test_ErrorHasCorrectProperties(self):
+    #     analysis = XMLChoraleAnalysis(TestFilePaths.voice_crossing)
+    #     analysis.analyze()
+    #     error = get_only_element(analysis.get_error_list("VoiceCrossingError"))
+    #     self.assertEqual(1.0, error.get_measure())
+    #     self.assertEqual(0.0, error.get_beat())
 
 
 if __name__ == "__main__":

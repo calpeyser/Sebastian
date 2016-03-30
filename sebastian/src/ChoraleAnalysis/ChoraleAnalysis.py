@@ -79,7 +79,8 @@ class XMLChoraleAnalysis(ChoraleAnalysis):
             ParallelFifthCheck(),
             ParallelOctaveCheck(),
             RangeCheck(),
-            #TritoneJumpCheck(),
+            #RepBassCheck(),
+            TritoneJumpCheck(),
             #VoiceCrossingCheck(),
-            #DistanceBetweenVoicesCheck()
+            DistanceBetweenVoicesCheck()
         ]

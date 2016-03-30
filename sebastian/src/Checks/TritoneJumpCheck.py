@@ -7,44 +7,32 @@ from sebastian.src.Checks.TritoneJumpError import TritoneJumpError
 class TritoneJumpCheck(Check):
     def run_check(self, chorale):
         out = []
-        #TODO
-        '''
-        get offset list for all parts (note: offsets)
-        get a reverse map
-        get pitchspace (pitch.ps) for notes in sequence, make sure they are not +3
 
-        '''
+        out.extend(self.run_check_for_part(chorale, Constants.SOPRANO_PART_NUMBER))
+        out.extend(self.run_check_for_part(chorale, Constants.ALTO_PART_NUMBER))
+        out.extend(self.run_check_for_part(chorale, Constants.TENOR_PART_NUMBER))
+        out.extend(self.run_check_for_part(chorale, Constants.BASS_PART_NUMBER))
 
-        offset_lists = [
-            chorale.get_offset_list(Constants.SOPRANO_PART_NUMBER),
-            chorale.get_offset_list(Constants.ALTO_PART_NUMBER),
-            chorale.get_offset_list(Constants.TENOR_PART_NUMBER),
-            chorale.get_offset_list(Constants.BASS_PART_NUMBER)
-        ]
-
-        reverse_note_maps = [
-            chorale.get_reverse_note_map(Constants.SOPRANO_PART_NUMBER),
-            chorale.get_reverse_note_map(Constants.ALTO_PART_NUMBER),
-            chorale.get_reverse_note_map(Constants.TENOR_PART_NUMBER),
-            chorale.get_reverse_note_map(Constants.BASS_PART_NUMBER)
-        ]
-
-        index = 0
-        while index < 4:
-            previous_offset = offset_lists[index][0]
-            previous_note = reverse_note_maps[index][previous_offset]
-            for offset in offset_lists[index][1:]:
-                current_note = reverse_note_maps[index][offset]
-                current_pitch = current_note.pitch
-                previous_pitch = previous_note.pitch
-                if current_pitch.ps - previous_pitch.ps == 3.0:
-                    current_location = chorale.get_location_from_offset(offset)
-                    previous_location = chorale.get_location_from_offset(previous_offset)
-                    part = Constants.PART_NAMES[index]
-                    error = TritoneJumpError(part, previous_pitch, previous_location, current_pitch, current_location, [previous_note, current_note])
-                    out.append(error)
-                previous_note = current_note
-                previous_offset = offset
-            index = index + 1
         return out
+
+    def run_check_for_part(self, chorale, part):
+        out = []
+        offsets = chorale.offset_lists[part]
+        reverse_note_map = chorale.reverse_note_maps[part]
+        previous_offset = offsets[0]
+        previous_note = reverse_note_map[previous_offset]
+        #part, pitch_1, location_1, pitch_2, location_2, notes
+        for offset in offsets[1:]:
+            current_note = reverse_note_map[offset]
+            current_pitch = current_note.pitch
+            previous_pitch = previous_note.pitch
+            if current_pitch.ps - previous_pitch.ps == 3.0:
+                current_location = chorale.get_location_from_offset(offset)
+                previous_location = chorale.get_location_from_offset(previous_offset)
+                error = TritoneJumpError(part, previous_pitch, previous_location, current_pitch, current_location, [previous_note, current_note])
+                out.append(error)
+            previous_note = current_note
+            previous_offset = offset
+        return out
+
 
