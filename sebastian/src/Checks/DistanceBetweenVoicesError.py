@@ -4,7 +4,7 @@ import sebastian.src.SebastianStructures.Constants as Constants
 
 class DistanceBetweenVoicesError(ChoraleError):
 
-    def __init__(self, pitch_1, pitch_2, part_number_1, part_number_2, measure_and_beat):
+    def __init__(self, pitch_1, pitch_2, part_number_1, part_number_2, measure_and_beat, notes):
         message = "The interval between %s in %s and %s in %s, at measure %s beat %s, is greater than an octave." % \
                        (pitch_1, Constants.PART_NAMES[part_number_1], pitch_2, Constants.PART_NAMES[part_number_2], measure_and_beat.measure, measure_and_beat.beat)
 
@@ -13,9 +13,8 @@ class DistanceBetweenVoicesError(ChoraleError):
         self.measure_and_beat = measure_and_beat
         self.pitch_1 = pitch_1
         self.pitch_2 = pitch_2
-        super(DistanceBetweenVoicesError, self).__init__(message)
-
-        print message
+        self.notes = notes
+        super(DistanceBetweenVoicesError, self).__init__(message, self.notes)
 
     def get_part_number_1(self):
         return self.part_number_1
