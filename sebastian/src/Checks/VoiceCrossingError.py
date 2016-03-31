@@ -27,10 +27,10 @@ class VoiceCrossingError(ChoraleError):
         return self.part_number_2
 
     def get_measure(self):
-        return self.measure_and_beat[0]
+        return self.measure_and_beat.measure
 
     def get_beat(self):
-        return self.measure_and_beat[1]
+        return self.measure_and_beat.beat
 
     def get_error_name(self):
         return "VoiceCrossingError"
