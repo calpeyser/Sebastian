@@ -75,11 +75,11 @@ class XMLChoraleAnalysis(ChoraleAnalysis):
 
     def check_list(self):
         return [
-            ParallelUnisonCheck(),
-            ParallelFifthCheck(),
-            ParallelOctaveCheck(),
+            #ParallelUnisonCheck(),
+            #ParallelFifthCheck(),
+            #ParallelOctaveCheck(),
             RangeCheck(),
-            #RepBassCheck(),
+            RepBassCheck(),
             TritoneJumpCheck(),
             #VoiceCrossingCheck(),
             DistanceBetweenVoicesCheck()

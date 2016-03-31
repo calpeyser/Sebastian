@@ -11,15 +11,15 @@ class RepBassIntegrationTests(unittest.TestCase):
         analysis = XMLChoraleAnalysis(TestFilePaths.rep_bass)
         analysis.analyze()
         errors = analysis.get_error_list("RepBassError")
-        self.assertEqual(1, len(errors))
+        self.assertEqual(2, len(errors))
 
     def test_ErrorHasCorrectProperties(self):
         analysis = XMLChoraleAnalysis(TestFilePaths.rep_bass)
         analysis.analyze()
-        error = get_only_element(analysis.get_error_list("RepBassError"))
-        self.assertEqual(3.0, error.get_measure_1())
-        self.assertEqual(3.0, error.get_measure_2())
-        self.assertEqual(0.0, error.get_beat_1())
+        error = analysis.get_error_list("RepBassError")
+        self.assertEqual(5.0, error.get_measure_1())
+        self.assertEqual(6.0, error.get_measure_2())
+        self.assertEqual(3.0, error.get_beat_1())
         self.assertEqual(1.0, error.get_beat_2())
 
 
