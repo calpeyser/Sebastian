@@ -6,6 +6,7 @@ setup(
     description = "A library for performing validations on chorales.",
     author = "Cal Peyser",
     packages = [
+        'sebastian',
     	'sebastian.src',
     	'sebastian.src.Checks',
     	'sebastian.src.ChoraleAnalysis',
