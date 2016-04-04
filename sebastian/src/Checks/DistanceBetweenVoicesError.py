@@ -4,29 +4,37 @@ import sebastian.src.SebastianStructures.Constants as Constants
 
 class DistanceBetweenVoicesError(ChoraleError):
 
-    def __init__(self, pitch_1, pitch_2, part_number_1, part_number_2, measure_and_beat, notes):
+    def __init__(self, high_pitch, low_pitch, high_part, low_part, measure_and_beat, notes):
         message = "The interval between %s in %s and %s in %s, at measure %s beat %s, is greater than an octave." % \
-                       (pitch_1, Constants.PART_NAMES[part_number_1], pitch_2, Constants.PART_NAMES[part_number_2], measure_and_beat.measure, measure_and_beat.beat)
+                       (high_pitch, Constants.PART_NAMES[high_part], low_pitch, Constants.PART_NAMES[low_part], measure_and_beat.measure, measure_and_beat.beat)
 
-        self.part_number_1 = part_number_1
-        self.part_number_2 = part_number_2
+        self.high_part = high_part
+        self.low_part = low_part
         self.measure_and_beat = measure_and_beat
-        self.pitch_1 = pitch_1
-        self.pitch_2 = pitch_2
+        self.high_pitch = high_pitch
+        self.low_pitch = low_pitch
         self.notes = notes
+        s = 'high part = ' + Constants.PART_NAMES[high_part]
+        print(s)
         super(DistanceBetweenVoicesError, self).__init__(message, self.notes)
 
-    def get_part_number_1(self):
-        return self.part_number_1
+    def get_high_pitch(self):
+        return self.high_pitch
 
-    def get_part_number_2(self):
-        return self.part_number_2
+    def get_low_pitch(self):
+        return self.low_pitch
+
+    def get_high_part(self):
+        return self.high_part
+
+    def get_low_part(self):
+        return self.low_part
 
     def get_measure(self):
-        return self.measure_and_beat[0]
+        return self.measure_and_beat.measure
 
     def get_beat(self):
-        return self.measure_and_beat[1]
+        return self.measure_and_beat.beat
 
     def get_error_name(self):
         return "DistanceBetweenVoicesError"

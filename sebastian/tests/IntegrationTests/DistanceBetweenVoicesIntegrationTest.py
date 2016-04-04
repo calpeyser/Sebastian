@@ -17,11 +17,11 @@ class DistanceBetweenVoicesIntegrationTest(unittest.TestCase):
         analysis = XMLChoraleAnalysis(TestFilePaths.bad_distance_between_voices)
         analysis.analyze()
         error = get_only_element(analysis.get_error_list("DistanceBetweenVoicesError"))
-        self.assertEqual(14, error.get_pitch_1().ps - error.get_pitch_2().ps)
-        self.assertEqual(Constants.ALTO_PART_NUMBER, error.get_part_number_1())
-        self.assertEqual(Constants.SOPRANO_PART_NUMBER, error.get_part_number_2())
+        self.assertEqual(14, error.get_high_pitch().ps - error.get_low_pitch().ps)
+        self.assertEqual(Constants.ALTO_PART_NUMBER, error.get_low_part())
+        self.assertEqual(Constants.SOPRANO_PART_NUMBER, error.get_high_part())
         self.assertEqual(2, error.get_measure())
-        self.assertEqual(0.0, error.get_beat_1())
+        self.assertEqual(0.0, error.get_beat())
 
 if __name__ == "__main__":
     unittest.main()
